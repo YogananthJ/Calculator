@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>Age Calculation</h1>
+        </header>
+        <div class="content-section">
+            <p>Enter your date of birth to calculate your age:</p>
+            <input type="date" id="dob" />
+            <button onclick="calculateAge()">Calculate Age</button>
+            <p id="age-result"></p>
+        </div>
+        <a href="index.html"><button class="back-to-home">Back to Home</button></a>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        function calculateAge() {
+            const dob = new Date(document.getElementById('dob').value);
+            const diffMs = Date.now() - dob.getTime();
+            const ageDate = new Date(diffMs);
+            const age = Math.abs(ageDate.getUTCFullYear() - 1970);
+            document.getElementById('age-result').textContent = `You are ${age} years old.`;
+        }
+    </script>
+</body>
+</html>
